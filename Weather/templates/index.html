@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WeatherNow | Previsão do Tempo</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+        <a href="/" class="logo">
+            <span class="logo-icon">☀</span>
+            Weather<span>Now</span>
+        </a>
+
+        <form class="search-box" id="search-form">
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="city-input"
+                placeholder="Pesquisar cidade..."
+                aria-label="Pesquisar cidade"
+                value="São Paulo"
+                required
+            >
+
+            <button type="submit" id="search-button">
+                Buscar
+            </button>
+        </form>
+
+        <div class="header-label">
+            <span class="status-dot"></span>
+            <span>CLIMA AO VIVO</span>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">SEU TEMPO, EM TEMPO REAL</p>
+                <h1>Previsão do tempo</h1>
+                <p class="subtitle">
+                    Acompanhe as condições climáticas da sua cidade.
+                </p>
+            </div>
+
+            <div class="date-card">
+                <span>DATA LOCAL</span>
+                <strong id="current-date">Carregando...</strong>
+            </div>
+        </section>
+
+        <p id="message" class="message" role="status" aria-live="polite">
+            Consultando as condições meteorológicas...
+        </p>
+
+        <section class="weather-grid">
+
+            <article class="card current-weather">
+
+                <div class="card-heading">
+                    <span class="section-label">CLIMA ATUAL</span>
+
+                    <span class="live-badge">
+                        <span class="status-dot"></span>
+                        DADOS REAIS
+                    </span>
+                </div>
+
+                <div class="location">
+                    <span class="location-icon">⌖</span>
+
+                    <div>
+                        <h2 id="city-name">São Paulo</h2>
+                        <p id="country-name">Brasil</p>
+                    </div>
+                </div>
+
+                <div class="temperature-row">
+
+                    <div>
+                        <div class="temperature">
+                            <span id="temperature">--</span><sup>°C</sup>
+                        </div>
+
+                        <p id="weather-description">
+                            Carregando condições...
+                        </p>
+
+                        <p class="feels-like">
+                            Sensação térmica de
+                            <strong id="feels-like">--°C</strong>
+                        </p>
+                    </div>
+
+                    <div class="weather-icon" id="weather-icon"
+                         aria-hidden="true">
+                        🌤️
+                    </div>
+
+                </div>
+
+                <div class="weather-divider"></div>
+
+                <div class="current-stats">
+
+                    <div>
+                        <span class="stat-icon">💧</span>
+                        <div>
+                            <p>Umidade</p>
+                            <strong id="humidity">--%</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="stat-icon">🌬️</span>
+                        <div>
+                            <p>Vento</p>
+                            <strong id="wind">-- km/h</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="stat-icon">🌧️</span>
+                        <div>
+                            <p>Precipitação</p>
+                            <strong id="precipitation">-- mm</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+
+            <article class="card hourly-card">
+
+                <div class="card-heading">
+                    <div>
+                        <span class="section-label">PRÓXIMAS HORAS</span>
+                        <h2 class="card-title">Previsão por hora</h2>
+                    </div>
+
+                    <span class="small-icon">◷</span>
+                </div>
+
+                <div class="hourly-list" id="hourly-list">
+                    <p>Carregando previsão...</p>
+                </div>
+
+                <p class="demo-note">
+                    Previsão fornecida pela Open-Meteo.
+                </p>
+
+            </article>
+
+        </section>
+
+        <section class="card forecast-card">
+
+            <div class="card-heading">
+                <div>
+                    <span class="section-label">PLANEJE SUA SEMANA</span>
+                    <h2 class="card-title">
+                        Previsão para os próximos dias
+                    </h2>
+                </div>
+
+                <span class="small-icon">▦</span>
+            </div>
+
+            <div class="forecast-list" id="forecast-list">
+                <p>Carregando previsão...</p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>WeatherNow <span>•</span> Seu clima, de um jeito simples.</p>
+            <p id="footer-status">Conectando ao serviço meteorológico...</p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
